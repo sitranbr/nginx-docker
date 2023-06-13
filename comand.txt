@@ -1,0 +1,17 @@
+echo "# nginx-docker" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/sitranbr/nginx-docker.git
+git push -u origin main
+
+docker-compose up --force-recreate --no-deps -d nginx
+
+docker-compose run --rm --entrypoint "\
+  certbot certonly --webroot \
+  --register-unsafely-without-email --agree-tos \
+  --webroot-path=/var/www/certbot \
+  --domain www.painel.sistran.app --domain painel.sistran.app \
+  --rsa-key-size 4096 --verbose --keep-until-expiring" certbot
+
