@@ -20,7 +20,7 @@ jobs:
         username: ${{ secrets.DEPLOY_USER }}
         key: ${{ secrets.DEPLOY_KEY }}
         source: "."
-        target: "/var/www/demo.siscon.dev" #deploy 4
+        target: "/var/www/demo.siscon.dev" #deploy 5
 
     - name: Build and run Docker Compose
       uses: appleboy/ssh-action@master
