@@ -20,7 +20,7 @@ jobs:
         username: ${{ secrets.DEPLOY_USER }}
         key: ${{ secrets.DEPLOY_KEY }}
         source: "."
-        target: "/var/www/demo.siscon.dev" #deploy 6
+        target: "/var/www/demo.siscon.dev" #deploy 7
 
     - name: Build and run Docker Compose
       uses: appleboy/ssh-action@master
@@ -41,12 +41,7 @@ jobs:
         key: ${{ secrets.DEPLOY_KEY }}
         script: |
           cd /var/www/demo.siscon.dev
-          docker-compose run --rm --entrypoint "\
-          certbot certonly --webroot \
-          --register-unsafely-without-email --agree-tos \
-          --webroot-path=/var/www/certbot \
-          --domain www.demo.siscon.dev --domain demo.siscon.dev \
-          --rsa-key-size 4096 --verbose --keep-until-expiring" certbot
+          docker-compose run --rm --entrypoint
 
 
 
